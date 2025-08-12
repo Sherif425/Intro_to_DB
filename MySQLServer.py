@@ -11,6 +11,7 @@ try:
         
         with open('alx_book_store.sql', 'r') as file:
             sql_script =file.read()
+            print(sql_script)
             
         for result in myCursor.execute(sql_script, multi=True):
             print(result)
@@ -20,7 +21,7 @@ except mysql.connector.Error as err:
     print(f"Error: {err}")    
     
 finally:
-    if 'mydb' in locals() and mysql_db.is_connected():
+    if 'mysql_db' in locals() and mysql_db.is_connected():
         myCursor.close()
         mysql_db.close()
         print("MySQL connection is closed.")    
